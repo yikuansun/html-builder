@@ -19,6 +19,8 @@ document.querySelector("#dirselect").onclick = function() {
     if (directory_to_add) {
         directory_to_add = directory_to_add[0];
 
+        document.querySelector("#dirlabel").innerText = directory_to_add;
+
         var zip = new admZip();
         zip.addLocalFolder(directory_to_add);
         zip.extractAllTo(userDataPath + "/temp/app", true);
