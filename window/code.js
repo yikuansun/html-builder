@@ -46,3 +46,30 @@ document.querySelector("#appname").onchange = function() {
 document.querySelector("#apptheme").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/main.js", fs.readFileSync(__dirname + "/template/main.js", "utf-8").replace("{app_theme}", this.value));
 }
+
+document.querySelector("#package").onclick = function() {
+    var platform = "darwin";
+    var productName = document.querySelector("#appname").value;
+
+    exec(`cd '${userDataPath + "/temp"}'; npm install; npm run build-${platform};`, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        /*if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }*/
+        console.log(`stdout: ${stdout}`);
+
+        var zip = new admZip();
+        zip.addLocalFolder(`${userDataPath}/temp/${productName}-${platform}-x64`);
+        var blob = new Blob([zip.toBuffer()], {
+            type: "application/zip"
+        });
+        var link = document.createElement("a");
+        link.download = productName + ".zip";
+        link.href = window.URL.createObjectURL(blob);
+        link.click();
+    });
+};
