@@ -31,12 +31,12 @@ document.querySelector("#iconselect").onclick = function() {
     var file = dialog.showOpenDialogSync({
         properties: ["openFile"],
         filters: [
-
+            { name: "Icon", extensions: ["png", "ico", "icns"] }
         ]
     });
     if (file) {
         file = file[0];
-        fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replaceAll("{icon_path}", file));
+        fs.writeFileSync(userDataPath + "/temp/icon.png", fs.readFileSync(file));
         document.querySelector("#iconlabel").innerText = file;
     }
 };

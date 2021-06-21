@@ -4,9 +4,9 @@
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "build-linux": "electron-packager . --icon {icon_path} --platform linux",
-        "build-darwin": "electron-packager . --icon {icon_path} --platform darwin",
-        "build-win32": "electron-packager . --icon {icon_path} --platform win32"
+        "build-linux": "electron-packager . --icon icon.png --platform linux",
+        "build-darwin": "electron-packager . --icon icon.png --platform darwin",
+        "build-win32": "electron-packager . --icon icon.png --platform win32"
     },
     "devDependencies": {
         "electron": "^11.1.1",
