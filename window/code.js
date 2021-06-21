@@ -48,7 +48,7 @@ document.querySelector("#apptheme").onchange = function() {
 }
 
 document.querySelector("#package").onclick = function() {
-    var platform = "darwin";
+    var platform = document.querySelector("#platform").value;
     var productName = document.querySelector("#appname").value;
 
     exec(`cd '${userDataPath + "/temp"}'; npm install; npm run build-${platform};`, (error, stdout, stderr) => {
