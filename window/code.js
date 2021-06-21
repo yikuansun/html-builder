@@ -48,6 +48,11 @@ document.querySelector("#apptheme").onchange = function() {
 }
 
 document.querySelector("#package").onclick = function() {
+    if (document.querySelector("#dirlabel").innerHTML == "" || document.querySelector("#iconlabel").innerHTML == "" || document.querySelector("#appname").value == "" || document.querySelector("#apptheme").value == "" || document.querySelector("#platform").value == "") {
+        alert("Fill out all fields");
+        return false;
+    }
+
     var platform = document.querySelector("#platform").value;
     var productName = document.querySelector("#appname").value;
 
