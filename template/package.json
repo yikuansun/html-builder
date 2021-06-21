@@ -1,0 +1,19 @@
+{
+    "name": "my-html-app",
+    "productName": "{app_name}",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build-linux": "electron-packager . --icon {icon_path} --platform linux",
+        "build-darwin": "electron-packager . --icon {icon_path} --platform darwin",
+        "build-win32": "electron-packager . --icon {icon_path} --platform win32"
+    },
+    "devDependencies": {
+        "electron": "^11.1.1",
+        "electron-packager": "^15.2.0"
+    },
+    "dependencies": {
+        "ably": "^1.2.10",
+        "adm-zip": "^0.5.3"
+    }
+}
