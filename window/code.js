@@ -44,3 +44,7 @@ document.querySelector("#iconselect").onclick = function() {
 document.querySelector("#appname").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replace("{app_name}", this.value));
 }
+
+document.querySelector("#apptheme").onchange = function() {
+    fs.writeFileSync(userDataPath + "/temp/main.js", fs.readFileSync(__dirname + "/template/main.js", "utf-8").replace("{app_theme}", this.value));
+}
