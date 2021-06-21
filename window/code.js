@@ -26,3 +26,17 @@ document.querySelector("#dirselect").onclick = function() {
         zip.extractAllTo(userDataPath + "/temp/app", true);
     }
 };
+
+document.querySelector("#iconselect").onclick = function() {
+    var file = dialog.showOpenDialogSync({
+        properties: ["openFile"],
+        filters: [
+
+        ]
+    });
+    if (file) {
+        file = file[0];
+        fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replaceAll("{icon_path}", file));
+        document.querySelector("#iconlabel").innerText = file;
+    }
+};
