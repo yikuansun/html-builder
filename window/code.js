@@ -4,11 +4,7 @@ const admZip = require("adm-zip");
 const fs = require("fs");
 const { exec } = require("child_process");
 
-var userDataPath = (app || remote.app).getPath("userData");
-
-function clearTemp() {
-    fs.rmdirSync(userDataPath + "/temp", { recursive: true });
-}
+var userDataPath = (app || remote.app).getPath("temp");
 
 var zip = new admZip();
 zip.addLocalFolder(__dirname + "/template");
