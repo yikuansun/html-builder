@@ -3,8 +3,8 @@ const { app, BrowserWindow, nativeTheme } = require("electron");
 function createWindow () {
 
     const mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 900,
+        width: 900,
+        height: 500,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true
@@ -13,7 +13,6 @@ function createWindow () {
 
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadFile("window/index.html");
-    mainWindow.maximize();
     nativeTheme.themeSource = "dark";
 
 }
