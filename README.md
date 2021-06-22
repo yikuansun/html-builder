@@ -1,4 +1,4 @@
 # HTML Builder
 Effortlessly create desktop apps out of HTML, CSS, and JS.
 
-Runs on [Electron](https://github.com/electron/electron). [Node.js](https://nodejs.org) must be installed to use HTML Builder.
+Runs on [Electron](https://github.com/electron/electron). [NPM](https://www.npmjs.com/) must be installed to use HTML Builder.
