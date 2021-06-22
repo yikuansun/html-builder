@@ -56,7 +56,7 @@ document.querySelector("#package").onclick = function() {
     var platform = document.querySelector("#platform").value;
     var productName = document.querySelector("#appname").value;
 
-    exec(`cd "${userDataPath + "/temp"}"&& npm install&& npm run build-${platform}`, (error, stdout, stderr) => {
+    exec(`cd "${userDataPath + "/temp"}"&& npm install&& npm run build-${platform}`.replace("&&", (process.platform == "darwin")?";":"&&"), (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
