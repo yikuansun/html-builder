@@ -7,7 +7,14 @@ const { exec } = require("child_process");
 var userDataPath = (app || remote.app).getPath("temp");
 
 function clearTemp() {
-    exec(`cd ${userDataPath}&&rm -R temp`)
+    switch (process.platform) {
+        case "win32":
+            exec(`cd ${userDataPath}&&RMDIR /S /Q temp`);
+            break;
+        default:
+            exec(`cd ${userDataPath}&&rm -R temp`);
+            break;
+    }
 }
 
 var zip = new admZip();
