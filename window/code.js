@@ -6,6 +6,10 @@ const { exec } = require("child_process");
 
 var userDataPath = (app || remote.app).getPath("temp");
 
+function clearTemp() {
+    exec(`cd ${userDataPath}&&rm -R temp`)
+}
+
 var zip = new admZip();
 zip.addLocalFolder(__dirname + "/template");
 zip.extractAllTo(userDataPath + "/temp", true);
@@ -76,5 +80,6 @@ document.querySelector("#package").onclick = function() {
         link.download = productName + ".zip";
         link.href = window.URL.createObjectURL(blob);
         link.click();
+        clearTemp();
     });
 };
