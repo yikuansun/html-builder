@@ -1,4 +1,4 @@
-const { remote, app } = require("electron");
+const { remote, app, shell } = require("electron");
 const { dialog } = remote;
 const admZip = require("adm-zip");
 const fs = require("fs");
@@ -90,5 +90,10 @@ document.querySelector("#package").onclick = function() {
         link.href = window.URL.createObjectURL(blob);
         link.click();
         clearTemp();
+        document.body.innerHTML = `
+            <h2>Thank you for using HTML Builder!</h2>
+            <button onclick="shell.openExternal('https://github.com/yikuansun/html-builder/issues')">Submit feedback</button>
+            <br /> <button onclick="location.reload();">Make another app</button>
+        `;
     });
 };
