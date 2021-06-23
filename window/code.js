@@ -52,11 +52,11 @@ document.querySelector("#iconselect").onclick = function() {
 
 document.querySelector("#appname").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replace("{app_name}", this.value));
-}
+};
 
 document.querySelector("#apptheme").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/main.js", fs.readFileSync(__dirname + "/template/main.js", "utf-8").replace("{app_theme}", this.value));
-}
+};
 
 document.querySelector("#package").onclick = function() {
     if (document.querySelector("#dirlabel").innerHTML == "" || document.querySelector("#iconlabel").innerHTML == "" || document.querySelector("#appname").value == "" || document.querySelector("#apptheme").value == "" || document.querySelector("#platform").value == "") {
@@ -66,6 +66,8 @@ document.querySelector("#package").onclick = function() {
 
     var platform = document.querySelector("#platform").value;
     var productName = document.querySelector("#appname").value;
+
+    document.body.innerHTML = "Building in progress...";
 
     exec(`cd "${userDataPath + "/temp"}"&& npm install&& npm run build-${platform}`, (error, stdout, stderr) => {
         if (error) {
