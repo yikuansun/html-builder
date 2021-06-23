@@ -45,9 +45,7 @@ document.querySelector("#iconselect").onclick = function() {
     });
     if (file) {
         file = file[0];
-        fs.writeFileSync(userDataPath + "/temp/icon.png", fs.readFileSync(file));
-        fs.writeFileSync(userDataPath + "/temp/icon.ico", fs.readFileSync(file));
-        fs.writeFileSync(userDataPath + "/temp/icon.icns", fs.readFileSync(file));
+        fs.writeFileSync(`${userDataPath}/temp/icon.${file.split(".").pop()}`, fs.readFileSync(file));
         document.querySelector("#iconlabel").innerText = file;
     }
 };
