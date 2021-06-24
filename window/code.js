@@ -108,8 +108,8 @@ document.querySelector("#package").onclick = function() {
         clearTemp();
         document.querySelector("#form").innerHTML = `
             <h2>Thank you for using HTML Builder!</h2>
-            <button onclick="shell.openExternal('https://github.com/yikuansun/html-builder/issues')">Submit feedback</button>
-            <br /> <button onclick="location.reload();">Make another app</button>
+            <button onclick="shell.openExternal('https://github.com/yikuansun/html-builder/issues')" class="button">Submit feedback</button>
+            <br /> <button onclick="location.reload();" class="button">Make another app</button>
         `;
     });
 };
