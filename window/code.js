@@ -82,6 +82,7 @@ document.querySelector("#package").onclick = function() {
 
         var zip = new admZip();
         zip.addLocalFolder(`${userDataPath}/temp/${productName}-${platform}-x64`);
+/*
         var blob = new Blob([zip.toBuffer()], {
             type: "application/zip"
         });
@@ -89,6 +90,13 @@ document.querySelector("#package").onclick = function() {
         link.download = productName + ".zip";
         link.href = window.URL.createObjectURL(blob);
         link.click();
+*/
+        var downloadLocation = dialog.showSaveDialogSync(null, {
+            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`
+        });
+
+        zip.writeZip(downloadLocation);
+
         clearTemp();
         document.querySelector("#form").innerHTML = `
             <h2>Thank you for using HTML Builder!</h2>
