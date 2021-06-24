@@ -14,7 +14,7 @@ function createWindow () {
 
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadFile("window/index.html");
-    nativeTheme.themeSource = "dark";
+    nativeTheme.themeSource = "light";
 
 }
 
