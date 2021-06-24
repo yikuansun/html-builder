@@ -7,7 +7,8 @@ function createWindow () {
         height: 500,
         webPreferences: {
             nodeIntegration: true,
-            enableRemoteModule: true
+            enableRemoteModule: true,
+            contextIsolation: false
         }
     });
 
