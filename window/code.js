@@ -90,6 +90,8 @@ document.querySelector("#package").onclick = function() {
             ]
         });
 
+        document.querySelector("#form").innerHTML = "Exporting...";
+
         zip.writeZip(downloadLocation);
 
         clearTemp();
