@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <body style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;">
-        <button id="dirselect">Select app directory</button><code id="dirlabel"></code>
-        <br /> <button id="iconselect">Select icon*</button><code id="iconlabel"></code>
-        <br /> App name: <input id="appname" placeholder="Mega Cool App" />
-        <br /> Theme: 
-        <select id="apptheme">
-            <option option hidden disabled selected value> -- select an option -- </option>
-            <option>dark</option>
-            <option>light</option>
-        </select>
-        <br /> Platform: 
-        <select id="platform">
-            <option option hidden disabled selected value> -- select an option -- </option>
-            <option value="darwin">MacOS</option>
-            <option value="linux">Linux</option>
-            <option value="win32">Windows</option>
-        </select>
-        <br />
-        <br /><button id="package">Package</button>
-        <br />
-        <br />*<i>Icon file must be PNG for Linux, ICNS for Mac, ICO for Windows</i>
+    <body>
+        <div id="form" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <button id="dirselect">Select app directory</button><code id="dirlabel"></code>
+            <br /> <button id="iconselect">Select icon*</button><code id="iconlabel"></code>
+            <br /> App name: <input id="appname" placeholder="Mega Cool App" />
+            <br /> Theme: 
+            <select id="apptheme">
+                <option option hidden disabled selected value> -- select an option -- </option>
+                <option>dark</option>
+                <option>light</option>
+            </select>
+            <br /> Platform: 
+            <select id="platform">
+                <option option hidden disabled selected value> -- select an option -- </option>
+                <option value="darwin">MacOS</option>
+                <option value="linux">Linux</option>
+                <option value="win32">Windows</option>
+            </select>
+            <br />
+            <br /><button id="package">Package</button>
+            <br />
+            <br />*<i>Icon file must be PNG for Linux, ICNS for Mac, ICO for Windows</i>
+        </div>
         <script src="code.js"></script>
     </body>
 </html>

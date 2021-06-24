@@ -67,7 +67,7 @@ document.querySelector("#package").onclick = function() {
     var platform = document.querySelector("#platform").value;
     var productName = document.querySelector("#appname").value;
 
-    document.body.innerHTML = "Building in progress...";
+    document.querySelector("#form").innerHTML = "Building in progress...";
 
     exec(`cd "${userDataPath + "/temp"}"&& npm install&& npm run build-${platform}`, (error, stdout, stderr) => {
         if (error) {
@@ -90,7 +90,7 @@ document.querySelector("#package").onclick = function() {
         link.href = window.URL.createObjectURL(blob);
         link.click();
         clearTemp();
-        document.body.innerHTML = `
+        document.querySelector("#form").innerHTML = `
             <h2>Thank you for using HTML Builder!</h2>
             <button onclick="shell.openExternal('https://github.com/yikuansun/html-builder/issues')">Submit feedback</button>
             <br /> <button onclick="location.reload();">Make another app</button>
