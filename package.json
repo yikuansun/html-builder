@@ -13,6 +13,7 @@
         "electron-packager": "^15.2.0"
     },
     "dependencies": {
-        "adm-zip": "^0.5.3"
+        "adm-zip": "^0.5.3",
+        "png2icons": "^2.0.1"
     }
 }

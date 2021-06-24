@@ -3,6 +3,7 @@ const { dialog } = remote;
 const admZip = require("adm-zip");
 const fs = require("fs");
 const { exec } = require("child_process");
+const png2icons = require("png2icons");
 
 var userDataPath = (app || remote.app).getPath("temp");
 
@@ -40,12 +41,22 @@ document.querySelector("#iconselect").onclick = function() {
     var file = dialog.showOpenDialogSync({
         properties: ["openFile"],
         filters: [
-            { name: "Icon", extensions: ["png", "ico", "icns"] }
+            { name: "PNG Icon", extensions: ["png"] }
         ]
     });
     if (file) {
         file = file[0];
-        fs.writeFileSync(`${userDataPath}/temp/icon.${file.split(".").pop()}`, fs.readFileSync(file));
+        var file_read = fs.readFileSync(file);
+
+        png2icons.setLogger(console.log);
+        var output = png2icons.createICNS(file_read, png2icons.BILINEAR, 0);
+        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.icns`, output);
+
+        output = png2icons.createICO(file_read, png2icons.BILINEAR, 0);
+        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.ico`, output);
+
+        fs.writeFileSync(`${userDataPath}/temp/icon.png`, file_read);
+
         document.querySelector("#iconlabel").innerText = file;
     }
 };
