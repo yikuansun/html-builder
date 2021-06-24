@@ -92,7 +92,10 @@ document.querySelector("#package").onclick = function() {
         link.click();
 */
         var downloadLocation = dialog.showSaveDialogSync(null, {
-            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`
+            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`,
+            filters: [
+                { name: "ZIP", extensions: ["zip"] }
+            ]
         });
 
         zip.writeZip(downloadLocation);
