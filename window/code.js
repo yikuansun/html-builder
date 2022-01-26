@@ -61,6 +61,12 @@ document.querySelector("#appname").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
 };
 
+document.querySelector("#appdesc").onchange = function() {
+    var packagedata = JSON.parse(fs.readFileSync(userDataPath + "/temp/package.json"));
+    packagedata["description"] = this.value;
+    fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
+};
+
 document.querySelector("#apptheme").onchange = function() {
     fs.writeFileSync(userDataPath + "/temp/main.js", fs.readFileSync(__dirname + "/template/main.js", "utf-8").replace("{app_theme}", this.value));
 };
