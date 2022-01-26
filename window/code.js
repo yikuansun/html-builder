@@ -96,10 +96,7 @@ document.querySelector("#package").onclick = function() {
         zip.addLocalFolder(`${userDataPath}/temp/dist`);
 
         var downloadLocation = dialog.showSaveDialogSync(null, {
-            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`,
-            filters: [
-                { name: "ZIP", extensions: ["zip"] }
-            ]
+            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}`,
         });
 
         document.querySelector("#form").innerHTML = "Exporting...";
