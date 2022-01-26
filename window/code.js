@@ -49,17 +49,8 @@ document.querySelector("#iconselect").onclick = function() {
     });
     if (file) {
         file = file[0];
-        var file_read = fs.readFileSync(file);
-
-        png2icons.setLogger(console.log);
-        var output = png2icons.createICNS(file_read, png2icons.BILINEAR, 0);
-        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.icns`, output);
-
-        output = png2icons.createICO(file_read, png2icons.BILINEAR, 0);
-        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.ico`, output);
-
-        fs.writeFileSync(`${userDataPath}/temp/icon.png`, file_read);
-
+        if (!fs.existsSync(`${userDataPath}/temp/htmlbuilder-buildresources`)) fs.mkdirSync(`${userDataPath}/temp/htmlbuilder-buildresources`);
+        fs.copyFileSync(file, `${userDataPath}/temp/htmlbuilder-buildresources/icon.png`);
         document.querySelector("#iconlabel").innerText = file;
     }
 };
@@ -95,7 +86,7 @@ document.querySelector("#package").onclick = function() {
         console.log(`stdout: ${stdout}`);
 
         var zip = new admZip();
-        zip.addLocalFolder(`${userDataPath}/temp/${productName}-${platform}-x64`);
+        zip.addLocalFolder(`${userDataPath}/temp/dist`);
 
         var downloadLocation = dialog.showSaveDialogSync(null, {
             defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`,
@@ -106,7 +97,7 @@ document.querySelector("#package").onclick = function() {
 
         document.querySelector("#form").innerHTML = "Exporting...";
 
-        zip.writeZip(downloadLocation);
+        zip.extractAllTo(downloadLocation);
 
         clearTemp();
         document.querySelector("#form").innerHTML = `
