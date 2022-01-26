@@ -56,7 +56,9 @@ document.querySelector("#iconselect").onclick = function() {
 };
 
 document.querySelector("#appname").onchange = function() {
-    fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replace("{app_name}", this.value));
+    var packagedata = JSON.parse(fs.readFileSync(userDataPath + "/temp/package.json"));
+    packagedata["productName"] = this.value;
+    fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
 };
 
 document.querySelector("#apptheme").onchange = function() {
