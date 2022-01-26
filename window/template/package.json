@@ -1,15 +1,27 @@
 {
     "name": "my-html-app",
     "productName": "{app_name}",
+    "description": "An app created with HTML Builder",
+    "author": {
+        "name": "HTML Builder",
+        "url": "https://github.com/yikuansun/html-builder"
+    },
+    "version": "1.0.0",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "build-linux": "electron-packager . --icon icon.png --platform linux",
-        "build-darwin": "electron-packager . --icon icon.icns --platform darwin",
-        "build-win32": "electron-packager . --icon icon.ico --platform win32"
+        "build-linux": "electron-builder --linux",
+        "build-darwin": "electron-builder --mac",
+        "build-win32": "electron-builder --windows"
     },
     "devDependencies": {
         "electron": "^13.1.1",
-        "electron-packager": "^15.2.0"
+        "electron-builder": "^22.14.5"
+    },
+    "build": {
+        "appId": "com.example.app",
+        "directories": {
+            "buildResources": "htmlbuilder-buildresources"
+        }
     }
 }

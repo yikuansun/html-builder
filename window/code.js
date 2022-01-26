@@ -3,7 +3,6 @@ const { dialog } = remote;
 const admZip = require("adm-zip");
 const fs = require("fs");
 const { exec } = require("child_process");
-const png2icons = require("png2icons");
 const fixPath = require("fix-path");
 
 fixPath();
@@ -49,23 +48,22 @@ document.querySelector("#iconselect").onclick = function() {
     });
     if (file) {
         file = file[0];
-        var file_read = fs.readFileSync(file);
-
-        png2icons.setLogger(console.log);
-        var output = png2icons.createICNS(file_read, png2icons.BILINEAR, 0);
-        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.icns`, output);
-
-        output = png2icons.createICO(file_read, png2icons.BILINEAR, 0);
-        if (output) fs.writeFileSync(`${userDataPath}/temp/icon.ico`, output);
-
-        fs.writeFileSync(`${userDataPath}/temp/icon.png`, file_read);
-
+        if (!fs.existsSync(`${userDataPath}/temp/htmlbuilder-buildresources`)) fs.mkdirSync(`${userDataPath}/temp/htmlbuilder-buildresources`);
+        fs.copyFileSync(file, `${userDataPath}/temp/htmlbuilder-buildresources/icon.png`);
         document.querySelector("#iconlabel").innerText = file;
     }
 };
 
 document.querySelector("#appname").onchange = function() {
-    fs.writeFileSync(userDataPath + "/temp/package.json", fs.readFileSync(__dirname + "/template/package.json", "utf-8").replace("{app_name}", this.value));
+    var packagedata = JSON.parse(fs.readFileSync(userDataPath + "/temp/package.json"));
+    packagedata["productName"] = this.value;
+    fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
+};
+
+document.querySelector("#appdesc").onchange = function() {
+    var packagedata = JSON.parse(fs.readFileSync(userDataPath + "/temp/package.json"));
+    packagedata["description"] = this.value;
+    fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
 };
 
 document.querySelector("#apptheme").onchange = function() {
@@ -95,18 +93,15 @@ document.querySelector("#package").onclick = function() {
         console.log(`stdout: ${stdout}`);
 
         var zip = new admZip();
-        zip.addLocalFolder(`${userDataPath}/temp/${productName}-${platform}-x64`);
+        zip.addLocalFolder(`${userDataPath}/temp/dist`);
 
         var downloadLocation = dialog.showSaveDialogSync(null, {
-            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}.zip`,
-            filters: [
-                { name: "ZIP", extensions: ["zip"] }
-            ]
+            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}`,
         });
 
         document.querySelector("#form").innerHTML = "Exporting...";
 
-        zip.writeZip(downloadLocation);
+        zip.extractAllTo(downloadLocation);
 
         clearTemp();
         document.querySelector("#form").innerHTML = `
