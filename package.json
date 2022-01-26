@@ -14,7 +14,6 @@
     },
     "dependencies": {
         "adm-zip": "^0.5.3",
-        "fix-path": "^3.0.0",
-        "png2icons": "^2.0.1"
+        "fix-path": "^3.0.0"
     }
 }
