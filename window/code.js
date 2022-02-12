@@ -89,7 +89,7 @@ document.querySelector("#package").onclick = function() {
 
     exec(`cd "${userDataPath + "/temp"}"&& npm install&& npm run build-${platform}`, (error, stdout, stderr) => {
         if (error) {
-            console.log(`error: ${error.message}`);
+            dialog.showErrorBox("Error!", error.message);
             return;
         }
         /*if (stderr) {
