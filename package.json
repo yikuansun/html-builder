@@ -24,7 +24,7 @@
         "png2icons": "^2.0.1"
     },
     "build": {
-        "appId": "com.example.app",
+        "appId": "com.electron.htmlbuilder",
         "directories": {
             "buildResources": "icons"
         }
