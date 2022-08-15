@@ -11,8 +11,7 @@ function createWindow () {
             nodeIntegration: true,
             enableRemoteModule: true,
             contextIsolation: false
-        },
-        icon: __dirname + "/icons/icon.png"
+        }
     });
 
     mainWindow.setMenuBarVisibility(false);
