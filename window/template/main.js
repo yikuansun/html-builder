@@ -7,8 +7,7 @@ function createWindow () {
         height: 900,
         webPreferences: {
             nodeIntegration: true,
-        },
-        icon: __dirname + "/htmlbuilder-resources/icon.png"
+        }
     });
 
     mainWindow.setMenuBarVisibility(false);
