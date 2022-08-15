@@ -57,6 +57,7 @@ document.querySelector("#iconselect").onclick = function() {
 document.querySelector("#appname").onchange = function() {
     var packagedata = JSON.parse(fs.readFileSync(userDataPath + "/temp/package.json"));
     packagedata["productName"] = this.value;
+    packagedata["build"]["appId"] = "com.electron.htmlapp" + Math.floor(Math.random() * 1000).toString();
     fs.writeFileSync(userDataPath + "/temp/package.json", JSON.stringify(packagedata));
 };
 
