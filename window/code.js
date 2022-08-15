@@ -1,5 +1,6 @@
-const { remote, app, shell } = require("electron");
-const { dialog } = remote;
+const { shell } = require("electron");
+const remote = require("@electron/remote");
+const { dialog, app } = remote;
 const admZip = require("adm-zip");
 const fs = require("fs");
 const { exec } = require("child_process");
@@ -7,7 +8,7 @@ const fixPath = require("fix-path");
 
 fixPath();
 
-var userDataPath = (app || remote.app).getPath("temp");
+var userDataPath = app.getPath("temp");
 
 function clearTemp() {
     switch (process.platform) {

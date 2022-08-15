@@ -15,10 +15,11 @@
         "build-win32": "electron-builder --windows"
     },
     "devDependencies": {
-        "electron": "^13.1.1",
+        "electron": "^17.1.0",
         "electron-builder": "^22.14.5"
     },
     "dependencies": {
+        "@electron/remote": "^2.0.8",
         "adm-zip": "^0.5.3",
         "fix-path": "^3.0.0",
         "png2icons": "^2.0.1"
