@@ -30,6 +30,9 @@
         },
         "mac": {
             "target": "zip"
+        },
+        "linux": {
+            "icon": "icon.png"
         }
     }
 }
