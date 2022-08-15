@@ -27,6 +27,9 @@
         "appId": "com.electron.htmlbuilder",
         "directories": {
             "buildResources": "icons"
+        },
+        "mac": {
+            "target": "zip"
         }
     }
 }
