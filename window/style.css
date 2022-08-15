@@ -15,11 +15,16 @@ button {
 }
 
 .button {
-    color: white;
-    border: none;
+    color: rgb(238, 145, 46);
+    border: 1px solid rgb(238, 145, 46);
+    background-color: white;
+    padding: 6.9px 10px;
+    transition: background-color 0.42s;
+}
+
+.button:hover {
     background-color: rgb(238, 145, 46);
-    padding: 6.9px;
-    cursor: pointer;
+    color: white;
 }
 
 input, select {
