@@ -29,6 +29,7 @@
         "directories": {
             "buildResources": "buildResources"
         },
+        "asar": false,
         "mac": {
             "target": "zip"
         },
