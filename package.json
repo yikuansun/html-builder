@@ -27,10 +27,13 @@
     "build": {
         "appId": "com.electron.htmlbuilder",
         "directories": {
-            "buildResources": "icons"
+            "buildResources": "buildResources"
         },
         "mac": {
             "target": "zip"
+        },
+        "linux": {
+            "icon": "buildResources/icon.png"
         }
     }
 }
