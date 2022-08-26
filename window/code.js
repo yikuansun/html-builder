@@ -11,14 +11,7 @@ fixPath();
 var userDataPath = app.getPath("temp");
 
 function clearTemp() {
-    switch (process.platform) {
-        case "win32":
-            exec(`cd ${userDataPath}&&RMDIR /S /Q temp`);
-            break;
-        default:
-            exec(`cd ${userDataPath}&&rm -R temp`);
-            break;
-    }
+        fs.rmdirSync(userDataPath + "/temp", { recursive: true });
 }
 
 var zip = new admZip();
