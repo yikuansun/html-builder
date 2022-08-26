@@ -16,7 +16,7 @@ function createWindow () {
 
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadFile("window/index.html");
-    mainWindow.setIcon(__dirname + "/icons/icon.png");
+    //mainWindow.setIcon(__dirname + "/icons/icon.png");
     nativeTheme.themeSource = "light";
 
     require('@electron/remote/main').enable(mainWindow.webContents)
