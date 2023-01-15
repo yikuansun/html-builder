@@ -6,8 +6,6 @@ const buildApp = require("html-builder-cli");
 
 fixPath();
 
-var userDataPath = app.getPath("temp");
-
 var userOptions = {
     name: "", platforms: [], desc: "", version: "", icon: "", colorScheme: ""
 };
