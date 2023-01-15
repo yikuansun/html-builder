@@ -72,16 +72,13 @@ document.querySelector("#package").onclick = function() {
 
     buildApp(appPath, userOptions);
 
-        var zip = new admZip();
-        zip.addLocalFolder(`${appPath}/html-builder_output`);
-
         var downloadLocation = dialog.showSaveDialogSync(null, {
             defaultPath: `${(app || remote.app).getPath("downloads")}/${userOptions.name}`,
         });
 
         document.querySelector("#form").innerHTML = "Exporting...";
 
-        zip.extractAllTo(downloadLocation);
+        fs.renameSync(`${appPath}/html-builder_output`, downloadLocation);
 
         document.querySelector("#form").innerHTML = `
             <h2>Thank you for using HTML Builder!</h2>
