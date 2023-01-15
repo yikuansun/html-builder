@@ -20,9 +20,8 @@
     },
     "dependencies": {
         "@electron/remote": "^2.0.8",
-        "adm-zip": "^0.5.3",
         "fix-path": "^3.0.0",
-        "png2icons": "^2.0.1"
+        "html-builder-cli": "^3.0.0"
     },
     "build": {
         "appId": "com.electron.htmlbuilder",
