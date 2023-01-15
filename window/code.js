@@ -71,7 +71,7 @@ document.querySelector("#package").onclick = function() {
 
     buildApp(appPath, {
         name: productName,
-        platforms: [ { "darwin": "mac", "linux": "linux", "win32": "windows" }[platform] ],
+        platforms: [ platform ],
         desc: userOptions.desc,
         version: userOptions.version,
         icon: userOptions.icon,
