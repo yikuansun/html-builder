@@ -58,31 +58,25 @@ document.querySelector("#apptheme").onchange = function() {
     userOptions.colorScheme = this.value;
 };
 
+document.querySelector("#platform").addEventListener("change", function() {
+    userOptions.platforms = [ this.value ];
+});
+
 document.querySelector("#package").onclick = function() {
     if (document.querySelector("#dirlabel").innerHTML == "" || document.querySelector("#iconlabel").innerHTML == "" || document.querySelector("#appname").value == "" || document.querySelector("#apptheme").value == "" || document.querySelector("#platform").value == "") {
         alert("Fill out all fields");
         return false;
     }
 
-    var platform = document.querySelector("#platform").value;
-    var productName = document.querySelector("#appname").value;
-
     document.querySelector("#form").innerHTML = "Building in progress...";
 
-    buildApp(appPath, {
-        name: productName,
-        platforms: [ platform ],
-        desc: userOptions.desc,
-        version: userOptions.version,
-        icon: userOptions.icon,
-        colorScheme: userOptions.colorScheme
-    });
+    buildApp(appPath, userOptions);
 
         var zip = new admZip();
         zip.addLocalFolder(`${appPath}/html-builder_output`);
 
         var downloadLocation = dialog.showSaveDialogSync(null, {
-            defaultPath: `${(app || remote.app).getPath("downloads")}/${productName}`,
+            defaultPath: `${(app || remote.app).getPath("downloads")}/${userOptions.name}`,
         });
 
         document.querySelector("#form").innerHTML = "Exporting...";
