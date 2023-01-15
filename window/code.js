@@ -13,7 +13,8 @@ var appPath = "";
 
 document.querySelector("#dirselect").onclick = function() {
     var directory_to_add = dialog.showOpenDialogSync({
-        properties: ["openDirectory"]
+        properties: ["openDirectory"],
+        title: "HTML Builder App Directory"
     });
     if (directory_to_add) {
         directory_to_add = directory_to_add[0];
@@ -28,7 +29,8 @@ document.querySelector("#iconselect").onclick = function() {
         properties: ["openFile"],
         filters: [
             { name: "PNG Icon", extensions: ["png"] }
-        ]
+        ],
+        title: "HTML Builder Icon Location"
     });
     if (file) {
         file = file[0];
@@ -69,6 +71,7 @@ document.querySelector("#package").onclick = function() {
 
         var downloadLocation = dialog.showSaveDialogSync(null, {
             defaultPath: `${(app || remote.app).getPath("downloads")}/${userOptions.name}`,
+            title: "HTML Builder Output Location"
         });
 
         document.querySelector("#form").innerHTML = "Exporting...";
