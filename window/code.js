@@ -1,9 +1,6 @@
-const { shell } = require("electron");
 const remote = require("@electron/remote");
 const { dialog, app } = remote;
-const admZip = require("adm-zip");
 const fs = require("fs");
-const { exec } = require("child_process");
 const fixPath = require("fix-path");
 const buildApp = require("html-builder-cli");
 
