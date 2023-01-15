@@ -55,12 +55,17 @@ document.querySelector("#apptheme").onchange = function() {
     userOptions.colorScheme = this.value;
 };
 
-document.querySelector("#platform").addEventListener("change", function() {
-    userOptions.platforms = [ this.value ];
-});
+for (var checkbox of document.querySelectorAll(".platformsChecklist")) {
+    checkbox.addEventListener("change", function() {
+        userOptions.platforms = [];
+        if (document.querySelector("#macSupport").checked) userOptions.platforms.push("mac");
+        if (document.querySelector("#linuxSupport").checked) userOptions.platforms.push("linux");
+        if (document.querySelector("#windowsSupport").checked) userOptions.platforms.push("windows");
+    });
+}
 
 document.querySelector("#package").onclick = function() {
-    if (document.querySelector("#dirlabel").innerHTML == "" || document.querySelector("#iconlabel").innerHTML == "" || document.querySelector("#appname").value == "" || document.querySelector("#apptheme").value == "" || document.querySelector("#platform").value == "") {
+    if (document.querySelector("#dirlabel").innerHTML == "" || document.querySelector("#iconlabel").innerHTML == "" || document.querySelector("#appname").value == "" || document.querySelector("#apptheme").value == "" || userOptions.platforms.length == 0) {
         alert("Fill out all fields");
         return false;
     }

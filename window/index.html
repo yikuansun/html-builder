@@ -16,13 +16,13 @@
                 <option>dark</option>
                 <option>light</option>
             </select>
-            <br /> Platform: 
-            <select id="platform">
-                <option option hidden disabled selected value> -- select an option -- </option>
-                <option value="mac">MacOS</option>
-                <option value="linux">Linux</option>
-                <option value="windows">Windows</option>
-            </select>
+            <br /> Platforms: <br />
+            <input type="checkbox" id="macSupport" class="platformsChecklist" />
+            <label for="macSupport">Mac</label> <br uh />
+            <input type="checkbox" id="linuxSupport" class="platformsChecklist" />
+            <label for="linuxSupport">Linux</label> <br uh />
+            <input type="checkbox" id="windowsSupport" class="platformsChecklist" />
+            <label for="windowsSupport">Windows</label> <br uh />
             <br />
             <br /><button id="package" class="button">Package</button>
         </div>
